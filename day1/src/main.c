@@ -27,9 +27,7 @@ int main()
 
         if (depth1 != INT_MAX && depth2 != INT_MAX)
         {
-            int sum = (depth1 == INT_MAX ? 0 : depth1)
-                + (depth2 == INT_MAX ? 0 : depth2)
-                + depth3;
+            int sum = depth1 + depth2 + depth3;
 
             numTimesIncreased += sum > lastSum;
 
