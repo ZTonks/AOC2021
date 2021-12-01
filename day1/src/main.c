@@ -13,16 +13,28 @@ int main()
     size_t len = 0;
     ssize_t read;
 
-    int lastDepth = INT_MAX;
+    int depth1 = INT_MAX;
+    int depth2 = INT_MAX;
+    int depth3 = INT_MAX;
+    int lastSum = INT_MAX;
     int numTimesIncreased = 0;
 
-    while ((read = getline(&line, &len, inputptr)) != -1) {
+    while ((read = getline(&line, &len, inputptr)) != -1)
+    {
+        depth1 = depth2;
+        depth2 = depth3;
+        depth3 = atoi(line);
 
-        int depth = atoi(line);
+        if (depth1 != INT_MAX && depth2 != INT_MAX)
+        {
+            int sum = (depth1 == INT_MAX ? 0 : depth1)
+                + (depth2 == INT_MAX ? 0 : depth2)
+                + depth3;
 
-        numTimesIncreased += depth > lastDepth;
+            numTimesIncreased += sum > lastSum;
 
-        lastDepth = depth;
+            lastSum = sum;
+        }
     }
 
     printf("%d\n", numTimesIncreased);
