@@ -16,6 +16,7 @@ int main()
 
     int xCoord = 0;
     int yCoord = 0;
+    int aim = 0;
 
     while ((read = getline(&line, &len, inputPtr)) != -1)
     {
@@ -30,10 +31,11 @@ int main()
         {
             case UP:
             case DOWN:
-                yCoord += (dir == UP ? 1 : -1) * dist;
+                aim += (dir == UP ? -1 : 1) * dist;
                 break;
             case FORWARD:
                 xCoord += dist;
+                yCoord += dist * aim;
                 break;
         }
     }
