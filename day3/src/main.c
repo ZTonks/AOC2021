@@ -9,13 +9,12 @@ int main()
     if (inputPtr == NULL)
         return -1;
 
+    int totals[NUMCOLS] = { 0 };
+    int numLines = 0;
+
     char* line = NULL;
     size_t len = 0;
     ssize_t read;
-
-    int totals[NUMCOLS] = { 0 };
-    int numLines = 0;
-    int numCols = 0;
 
     while ((read = getline(&line, &len, inputPtr)) != -1)
     {
