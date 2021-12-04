@@ -13,7 +13,7 @@ local fileName :: 'string' := "/home/zak/AOC2021/day3/input",
       bitStringsOrig :: 'Array'( 'Array'( 'truefalse' ) ),
       bitArray :: 'Array'( 'truefalse' ),
       i :: 'posint',
-      bit :: 'boolean',
+      bit :: 'truefalse',
       line :: 'Or'( 'string', 'identical'( 0 ) ),
       x :: 'string',
       rating :: 'truefalse',
@@ -49,7 +49,7 @@ local fileName :: 'string' := "/home/zak/AOC2021/day3/input",
 
             bit := getMostCommonBitForCol(bitStringsOrig, i);
 
-            if not rating and bit <> FAIL then
+            if not rating then
 
                 bit := not bit;
 
@@ -83,7 +83,7 @@ end proc:
 getMostCommonBitForCol := proc(
     bitStrings :: Array,
     i :: posint
-) :: boolean;
+) :: truefalse;
 
 local bitMap :: 'Array'( 'identical'( 0, 1 ) )
         := map( y -> `if`( y[i], 1, 0 ), bitStrings ),
@@ -99,7 +99,7 @@ end proc:
 writeArrayWithCommonBitInCol := proc(
     bitStringsOrig :: Array,
     col :: posint,
-    bit :: boolean
+    bit :: truefalse
 ) :: Array;
 
 local x :: 'Array'( 'truefalse' ),
@@ -107,7 +107,7 @@ local x :: 'Array'( 'truefalse' ),
 
 for x in bitStringsOrig do
 
-    if x[col] = bit or bit = FAIL then
+    if x[col] = bit then
 
         bitStringsNext ,= x;
 
